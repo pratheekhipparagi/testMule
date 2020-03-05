@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="38e5ca7c-ee56-47b1-a8f0-ec3fb61540c0" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<api-gateway:autodiscovery apiId="16003596" doc:name="API Autodiscovery" doc:id="0d8e42c1-cb22-4c4c-8667-8cdf1c9649b1" flowRef="helloworld1Flow" />
+	<flow name="helloworld1Flow" doc:id="dc198367-6ca7-4550-a229-59dd2ffa6f43" >
+		<http:listener doc:name="Listener" doc:id="a42763c5-3f7f-47b3-9a54-a7bf9583a6e5" config-ref="HTTP_Listener_config" path="/"/>
+		<set-payload doc:name="Set Payload" doc:id="b0adc121-0692-4b54-a1d2-363e4ba76789" value="Hello How Are you"/>
+	</flow>
+</mule>
